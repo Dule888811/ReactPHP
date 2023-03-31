@@ -1,0 +1,48 @@
+{
+    "name": "react/filesystem",
+    "description": "Asynchronous filesystem abstraction.",
+    "keywords": [
+        "filesystem",
+        "asynchronous"
+    ],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Cees-Jan Kiewiet",
+            "email": "ceesjank@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.4.0",
+        "react/event-loop": "^1.2",
+        "react/promise": "^2.8",
+        "react/promise-stream": "^1.2",
+        "react/stream": "^1.2"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.5",
+        "react/async": "^4 || ^3"
+    },
+    "autoload": {
+        "psr-4": {
+            "React\\Filesystem\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "React\\Tests\\Filesystem\\": "tests/"
+        }
+    },
+    "suggest": {
+        "ext-uv": "* for better I/O performance"
+    },
+    "config": {
+        "sort-packages": true,
+        "platform": {
+            "php": "7.4.7"
+        },
+        "allow-plugins": {
+            "wyrihaximus/composer-update-bin-autoload-path": true
+        }
+    }
+}

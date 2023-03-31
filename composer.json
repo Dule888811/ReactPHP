@@ -1,0 +1,5 @@
+{
+    "require": {
+        "react/filesystem": "^0.2@dev"
+    }
+}
