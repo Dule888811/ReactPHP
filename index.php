@@ -10,7 +10,12 @@ Factory::create()->detect('C:\xampp\htdocs\allip.example1 (1)\example1\db.txt')-
   $numbers = preg_replace('/[^0-9]/', ' ', $contents);
   $numbersArray = explode(" ",$numbers);
     $numbersArray = \array_diff($numbersArray, [""]);
- echo  $contents; var_dump($numbers,$numbersArray);
+    $numArr = array();
+    foreach($numbersArray as $num)
+    {
+        $numArr[] = $num;
+    }
+ echo  $contents; var_dump($numArr);
 })->done();
 /*Factory::create()->detect('C:\xampp\htdocs\allip.example1 (1)\example1\input.txt')->then(function (FileInterface $file) {
     return $file->getContents();
