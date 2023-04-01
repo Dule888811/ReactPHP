@@ -19,9 +19,14 @@ Factory::create()->detect('C:\xampp\htdocs\allip.example1 (1)\example1\db.txt')-
     $countriesArray = preg_split("/\d+/", $contents);
     array_shift($countriesArray);
 
- echo  $contents;
 })->done();
 
-echo "<pre>";
-var_dump($numArr) ;
-var_dump($countriesArray);
+Factory::create()->detect('C:\xampp\htdocs\allip.example1 (1)\example1\input.txt')->then(function (FileInterface $file) {
+    return $file->getContents();
+})->then(static function (string $contents): void {
+    global $numbersArray;
+    $numbersArray = preg_split('/\r\n|\r|\n/',$contents);
+    echo "<pre>";
+    var_dump($numbersArray);
+  //  echo $contents;
+})->done();
