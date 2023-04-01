@@ -45,40 +45,46 @@ Factory::create()->detect('C:\xampp\htdocs\allip.example1 (1)\example1\input.txt
     echo 'Mtime: ', $stat->mtime()->format(DATE_ISO8601), PHP_EOL;
     echo 'Ctime: ', $stat->ctime()->format(DATE_ISO8601), PHP_EOL;
 })->done();  */
-global $numCountry;
-
+//global $numCountry;
+global $string;
 foreach($numbersArray as $number)
 {
     if(strlen($number) == 10)
     {
-        $numCountry[] = substr($number,0,3);
+        $nCountry = substr($number,0,3);
+        $key = array_search($nCountry,$numArr);
+        $string .=$number . ' ' . $numArr[$key] . ' ' .  $countriesArray[$key];
+        $string .= "\n";
     }
     if(strlen($number) == 11)
     {
-        $numCountry[] = substr($number,0,4);
+        $nCountry = substr($number,0,4);
+        $key = array_search($nCountry,$numArr);
+        $string .=$number . ' ' . $numArr[$key] . ' ' .  $countriesArray[$key];
+        $string .= "\n";
     }
     if(strlen($number) == 9)
     {
-        $numCountry[] = substr($number,0,2);
+        $nCountry = substr($number,0,2);
+        $key = array_search($nCountry,$numArr);
+        $string .=$number . ' ' . $numArr[$key] . ' ' .  $countriesArray[$key];
+        $string .= "\n";
     }
     if(strlen($number) == 8)
     {
-        $numCountry[] = substr($number,0,1);
+        $nCountry = substr($number,0,1);
+        $key = array_search($nCountry,$numArr);
+        $string .=$number . ' ' . $numArr[$key] . ' ' .  $countriesArray[$key];
+        $string .= "\n";
     }
+
 }
 
-foreach ($numCountry as $nCountry)
-{
-    global $string;
-    $key = array_search($nCountry,$numArr);
-    $string .= $countriesArray[$key];
-    $string .= "\n";
-}
+
 
 
 Factory::create()->detect('C:\xampp\htdocs\allip.example1 (1)\example1\output.txt')->then(static function (FileInterface $file) use ($string, $numbersArray,$countriesArray,$numArr) {
     return $file->putContents($string);
 })->then(static function ($result) : void {
-    var_export([$result]);
 })->done();
 
